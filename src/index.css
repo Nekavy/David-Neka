@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Importar fonte Google (opcional) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+/* Customizações usando @layer */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition;
+  }
+}
+
+@layer utilities {
+  .rotate-15 {
+    transform: rotate(15deg);
+  }
+}
