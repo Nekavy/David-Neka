@@ -1,0 +1,16 @@
+[
+  {
+    "title": "OportoCenter",
+    "description": "A website for private company that has apartment booking in Porto, Portugal. (now mostly deactivated)",
+    "image": "/assets/oporto.png",
+    "slug": "personal-portfolio",
+    "github": "https://github.com/seuusuario/portfolio"
+  },
+  {
+    "title": "Landing Page",
+    "description": "High-converting landing page using HTML/CSS/JS.",
+    "image": "/assets/landing-thumb.jpg",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Ai Aerial View",
+    "description": "A aplication that trains a neural network to generate a mask of an aerial view image.",
+    "image": "/assets/projects/ai/aiaerialview.png",
+    "slug": "personal-portfolio",
+    "github": "https://github.com/Nekavy/Ai_Aerial_View"
+  },
+  {
+    "title": "Image Generation",
+    "description": "A project with Comfyui and Stable Difusion trained to generate images of myself.",
+    "image": "/assets/projects/ai/profilereal.png",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  },
+{
+    "title": "AI Robot",
+    "description": "AI robot that uses ai to calculate the path it must follow, by the difference colors and lighting on reflected on the floor. (ultimately following a white line) Invited to University of Lodz Poland ",
+    "image": "/assets/projects/ai/airobot.png",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  }
+]

@@ -7,7 +7,7 @@ import About from './components/About';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
+import BlobityCursor from './components/BlobityCursor';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ export default function App() {
       <Certificates />
       <Contact />
       <Footer />
-      <CustomCursor />
+      <BlobityCursor />
     </div>
   );
 }

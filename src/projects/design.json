@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Campus School Link",
+    "description": "A ilustration project for a school link platform, designed in Figma.",
+    "image": "/assets/projects/design/campusappdesign.png",
+    "slug": "personal-portfolio",
+    "github": "https://www.figma.com/design/ENMrYjPA9THc7iqJ9X18d8/Campus-School-Link?node-id=1-198&t=v0bJe0JIEezzw9h6-1"
+  },
+  {
+    "title": "Landing Page",
+    "description": "High-converting landing page using HTML/CSS/JS.",
+    "image": "/assets/landing-thumb.jpg",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  }
+]

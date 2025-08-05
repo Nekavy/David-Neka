@@ -22,3 +22,38 @@
     transform: rotate(15deg);
   }
 }
+@keyframes bubbly {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+canvas {
+  z-index: 5 !important;
+}
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+.animate-bubble {
+  position: absolute;
+  background-color: #facc15;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation-name: bubbleFloat;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+
+

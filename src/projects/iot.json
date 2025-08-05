@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Personal Portfolio",
+    "description": "A responsive portfolio built with React and Tailwind CSS.",
+    "image": "/assets/portfolio-thumb.jpg",
+    "slug": "personal-portfolio",
+    "github": "https://github.com/seuusuario/portfolio"
+  },
+  {
+    "title": "Landing Page",
+    "description": "High-converting landing page using HTML/CSS/JS.",
+    "image": "/assets/landing-thumb.jpg",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  }
+]
