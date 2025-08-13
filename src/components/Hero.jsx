@@ -1,53 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import Bubbles from "./anim/Bubbles";
 
 export default function Hero() {
-  const bubbles = useRef([]);
+  const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    const NUM_BUBBLES = 30;
-    const speeds = [];
-    const positions = [];
-    const sizes = [];
-
-    for (let i = 0; i < NUM_BUBBLES; i++) {
-      positions[i] = Math.random() * 100; // posição horizontal (%)
-      speeds[i] = 0.1 + Math.random() * 0.3; // velocidade (bottom % por frame)
-      sizes[i] = 15 + Math.random() * 20; // tamanho px
-    }
-
-    let animationFrameId;
-
-    function animate() {
-      bubbles.current.forEach((bubble, i) => {
-        if (!bubble) return; // segurança
-
-        let bottom = parseFloat(bubble.style.bottom) || Math.random() * 100;
-        bottom += speeds[i];
-
-        if (bottom > 110) {
-          bottom = -10; // reinicia abaixo da tela
-          positions[i] = Math.random() * 100; // muda posição horizontal
-          bubble.style.left = positions[i] + "%";
-          bubble.style.width = sizes[i] + "px";
-          bubble.style.height = sizes[i] + "px";
-        }
-
-        bubble.style.bottom = bottom + "%";
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    }
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
+  const handleCopyEmail = () => {
+    const email = "teuemail@example.com"; // substitua pelo seu email
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <section
       id="home"
       className="relative flex h-[85vh] w-full items-center justify-center bg-cover bg-center sm:h-[90vh] md:h-[100vh]"
     >
+      {/* Fundo com gradientes */}
       <div
         className="absolute inset-0"
         style={{
@@ -59,38 +30,19 @@ export default function Hero() {
           `,
           backgroundBlendMode: 'overlay',
         }}
-      ></div>
+      />
 
+      {/* Bolhas animadas */}
+      <Bubbles />
 
-
-      {/* Bolhas */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <span
-            key={i}
-            ref={(el) => (bubbles.current[i] = el)}
-            style={{
-              position: "absolute",
-              bottom: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${15 + Math.random() * 20}px`,
-              height: `${15 + Math.random() * 20}px`,
-              backgroundColor: "#f5d742",
-              borderRadius: "50%",
-              opacity: 0.7,
-              pointerEvents: "none",
-            }}
-          />
-        ))}
-      </div>
-
+      {/* Conteúdo principal */}
       <div className="container relative mx-auto flex flex-col items-center justify-center">
         <div className="social-links absolute top-10 right-0 flex gap-10 text-lg sm:gap-12 md:gap-14"></div>
 
         <div className="flex flex-col items-center justify-center">
           <h1 className="porcimadecursor flex flex-col text-center text-[96px] font-extrabold leading-[0.8em] sm:text-[120px] sm:leading-[0.85em] md:text-[155px] lg:text-[215px] mb-6">
-            <span>DAVID</span>
-            <span>BORGES</span>
+            <span className="opacity-0 fade-up">DAVID</span>
+            <span className="opacity-0 fade-up-delay">BORGES</span>
           </h1>
 
           <div className="relative w-[150px] md:w-[200px] lg:w-[245px] h-[150px] md:h-[200px] lg:h-[245px] mb-12">
@@ -102,13 +54,50 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Texto e links sociais */}
         <div className="flex w-full max-w-[1440px] items-center justify-between px-4">
           <p className="max-w-[350px] text-center text-base font-medium md:text-left md:text-xl lg:max-w-[400px]">
             Frontend Engineer and Web Designer, currently available for work.
           </p>
-          <p className="hidden max-w-[420px] text-right text-base font-semibold lg:block md:text-xl">
-            Focused on interfaces and experiences.
-          </p>
+
+          <div className="hidden lg:flex items-center gap-4 text-[#e4ded7]">
+            <a
+              data-blobity-magnetic="false"
+              data-blobity-radius="20"
+              href="https://github.com/davidborges"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors"
+            >
+              <FaGithub className="w-10 h-10" />
+            </a>
+
+            <a
+              data-blobity-magnetic="false"
+              href="https://linkedin.com/in/seu-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors"
+            >
+              <FaLinkedin className="w-10 h-10" />
+            </a>
+
+            <div className="relative flex items-center">
+              <button
+                data-blobity-magnetic="false"
+                onClick={handleCopyEmail}
+                className="hover:text-gray-300 transition-colors"
+              >
+                <FaEnvelope className="w-10 h-10" />
+              </button>
+
+              {copied && (
+                <div className="absolute top-[-40px] left-1/2 -translate-x-1/2 bg-black text-white px-3 py-1 rounded shadow-lg z-50 pointer-events-none">
+                  Copiado!
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>

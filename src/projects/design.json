@@ -1,16 +1,30 @@
 [
   {
+    "title": "Parkking App Design",
+    "description": "A app focused on renting park spaces designed and created with FLutter.",
+    "image": "/assets/projects/design/wondererdesign.png",
+    "slug": "landing-page",
+    "github": ""
+  },
+  {
+    "title": "Global Bites App",
+    "description": "A design project for a food forums app, created in Figma. University of Lile France.",
+    "image": "/assets/projects/design/globalbitesapp.png",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  },
+  {
+    "title": "Speet Cart App Website",
+    "description": "A design project for cart racing web app, created in Figma.",
+    "image": "/assets/projects/design/speetapp.png",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  },
+  {
     "title": "Campus School Link",
     "description": "A ilustration project for a school link platform, designed in Figma.",
     "image": "/assets/projects/design/campusappdesign.png",
     "slug": "personal-portfolio",
     "github": "https://www.figma.com/design/ENMrYjPA9THc7iqJ9X18d8/Campus-School-Link?node-id=1-198&t=v0bJe0JIEezzw9h6-1"
-  },
-  {
-    "title": "Landing Page",
-    "description": "High-converting landing page using HTML/CSS/JS.",
-    "image": "/assets/landing-thumb.jpg",
-    "slug": "landing-page",
-    "github": "https://github.com/seuusuario/landing-page"
   }
 ]

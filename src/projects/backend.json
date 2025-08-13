@@ -1,14 +1,20 @@
 [
   {
-    "title": "Personal Portfolio",
-    "description": "A responsive portfolio built with React and Tailwind CSS.",
+    "title": "Oracle Ubuntu Server",
+    "description": "A server setup using Oracle Cloud Infrastructure to host a personal portfolio. and other projects. like apps, databases... It also includes api solutions, pipelines, and more.",
     "image": "/assets/portfolio-thumb.jpg",
-    "slug": "personal-portfolio",
-    "github": "https://github.com/seuusuario/portfolio"
+    "slug": "personal-portfolio"
   },
   {
-    "title": "Landing Page",
+    "title": "Fish Pond monitoring infrastructure",
     "description": "High-converting landing page using HTML/CSS/JS.",
+    "image": "/assets/landing-thumb.jpg",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  },
+  {
+    "title": "Database Management of oportocenter",
+    "description": "real database management of a private company that has apartment booking in Porto, Portugal. with management of apartments, clients, days booked and transactions.",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"

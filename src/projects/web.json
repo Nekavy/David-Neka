@@ -4,11 +4,20 @@
     "description": "A website for private company that has apartment booking in Porto, Portugal. (now mostly deactivated)",
     "image": "/assets/oporto.png",
     "slug": "personal-portfolio",
-    "github": "https://github.com/seuusuario/portfolio"
+    "github": "",
+    "url": "https://oportocenter.pt/"
   },
   {
-    "title": "Landing Page",
-    "description": "High-converting landing page using HTML/CSS/JS.",
+    "title": "Wonderer Design Portfolio",
+    "description": "A responsive portfolio built with React and Tailwind CSS.",
+    "image": "/assets/landing-thumb.jpg",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page",
+    "url": "https://wonderer.pt/"
+  },
+  {
+    "title": "David Neka Portfolio",
+    "description": "My personal responsive portfolio built with React and Tailwind CSS.",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"

@@ -1,14 +1,21 @@
 [
   {
-    "title": "Personal Portfolio",
-    "description": "A responsive portfolio built with React and Tailwind CSS.",
+    "title": "Setup of Mqtt Server and iot devices for zsupport company office",
+    "description": "Development of a Mqtt server and iot devices for the office of zsupport company in Porto, Portugal. The devices are used to monitor the office environment and control lights and other devices.",
     "image": "/assets/portfolio-thumb.jpg",
     "slug": "personal-portfolio",
     "github": "https://github.com/seuusuario/portfolio"
   },
   {
-    "title": "Landing Page",
-    "description": "High-converting landing page using HTML/CSS/JS.",
+    "title": "Multiple IoT devices for home automation and tinkercad projects",
+    "description": "",
+    "image": "/assets/landing-thumb.jpg",
+    "slug": "landing-page",
+    "github": "https://github.com/seuusuario/landing-page"
+  },
+  {
+    "title": "HINA - Home IoT Iinteligent assistant",
+    "description": "A project that uses a Arduino and bluettoh / wifi micro commponents to control home devices and monitor the environment. It includes a hlographic ilusion of a virtual asisstant that uses voice commmands to control the devices and monitor the environment.",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"

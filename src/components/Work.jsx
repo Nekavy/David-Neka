@@ -1,14 +1,13 @@
 import { useState } from "react";
-
 import aiProjects from "../projects/ai.json";
 import webProjects from "../projects/web.json";
 import mobileProjects from "../projects/mobile.json";
 import designProjects from "../projects/design.json";
 import backendProjects from "../projects/backend.json";
-import infraProjects from "../projects/infra.json";
 import iotProjects from "../projects/iot.json";
+import { Typewriter } from "react-simple-typewriter";
 
-const categories = ["AI", "Web", "Mobile", "Design", "Backend", "Infrastructure", "IoT"];
+const categories = ["AI", "Web", "Mobile", "Design", "Backend", "IoT"];
 
 const projects = [
   ...aiProjects.map((p) => ({ ...p, category: "AI" })),
@@ -16,7 +15,6 @@ const projects = [
   ...mobileProjects.map((p) => ({ ...p, category: "Mobile" })),
   ...designProjects.map((p) => ({ ...p, category: "Design" })),
   ...backendProjects.map((p) => ({ ...p, category: "Backend" })),
-  ...infraProjects.map((p) => ({ ...p, category: "Infrastructure" })),
   ...iotProjects.map((p) => ({ ...p, category: "IoT" })),
 ];
 
@@ -33,7 +31,26 @@ export default function Portfolio() {
       className="py-20 px-4 sm:px-6 lg:px-16 bg-[#0e1016] text-[#e4ded7]"
     >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold mb-6">Portfolio</h2>
+        <h2 className="text-5xl font-extrabold mb-6">
+          <Typewriter
+            words={[
+              "Project portfolio",
+              "AI explorations",
+              "Web development",
+              "Mobile applications",
+              "Functional design",
+              "Backend experience",
+              "IoT prototyping",
+            ]}
+            loop={0}
+            cursor
+            cursorStyle="|"
+            typeSpeed={80}
+            deleteSpeed={60}
+            delaySpeed={1500}
+          />
+        </h2>
+
         <p className="text-base md:text-lg mb-12 text-gray-400">
           Explore projects by category.
         </p>
@@ -61,36 +78,77 @@ export default function Portfolio() {
             <p className="text-gray-400">No projects found in this category.</p>
           ) : (
             filteredProjects.map((project, index) => (
-              <a
-                href={project.link || project.github || "#"}
+              <div
                 key={index}
-                className="group relative block overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white/5"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white/5"
               >
                 <img
                   src={project.image}
                   alt={project.title}
                   className="h-48 w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
                 />
-                <div className="p-5 text-left">
-                  <h3 className="flex items-center justify-between text-xl font-bold mb-2">
-                    {project.title}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-3 text-sm text-[#ebec59] underline"
-                        onClick={e => e.stopPropagation()}
+
+                {/* Botões GitHub e URL */}
+                <div className="absolute top-3 right-3 flex gap-2">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-blobity
+                      data-blobity-shape="circle"
+                      data-blobity-magnetic="false"
+                      data-blobity-radius="20"
+                      className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-black bg-white text-black hover:bg-gray-200 transition"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* SVG GitHub */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="w-5 h-5"
                       >
-                        GitHub
-                      </a>
-                    )}
-                  </h3>
+                        <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.94c.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.36-1.3-1.72-1.3-1.72-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.4.96.11-.76.41-1.26.74-1.55-2.56-.29-5.26-1.28-5.26-5.68 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.06 0 0 .98-.31 3.2 1.18a11.04 11.04 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.85 1.19 3.11 0 4.41-2.7 5.39-5.27 5.67.42.36.79 1.08.79 2.18v3.24c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z" />
+                      </svg>
+                    </a>
+                  )}
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-blobity
+                      data-blobity-shape="circle"
+                      data-blobity-magnetic="false"
+                      data-blobity-radius="20"
+                      className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-black bg-white text-black hover:bg-gray-200 transition"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* SVG Corrente */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2"
+                        stroke="currentColor"
+                        className="w-5 h-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M10.59 13.41a1 1 0 0 1 1.41 0l2.59 2.59a3 3 0 1 0 4.24-4.24l-1.17-1.17a1 1 0 0 1 1.41-1.41l1.17 1.17a5 5 0 0 1-7.07 7.07l-2.59-2.59a1 1 0 0 1 0-1.42Zm2.82-2.82a1 1 0 0 1-1.41 0L9.41 8a3 3 0 1 0-4.24 4.24l1.17 1.17a1 1 0 0 1-1.41 1.41l-1.17-1.17a5 5 0 0 1 7.07-7.07l2.59 2.59a1 1 0 0 1 0 1.42Z"
+                        />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+
+                <div className="p-5 text-left">
+                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-sm text-gray-300">{project.description}</p>
                 </div>
-              </a>
+              </div>
             ))
           )}
         </div>

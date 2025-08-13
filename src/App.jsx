@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <div className="bg-[#0E1016] text-[#e4ded7] scroll-smooth">
-      {loading && <Preloader />}
+
       <Navbar />
       <Hero />
       <Work />
