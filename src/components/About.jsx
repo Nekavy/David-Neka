@@ -1,21 +1,31 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import strings from "./strings"; // sistema de strings
 
-function AnimatedText({ text, className, delayBetween = 120, startAnimation, onComplete }) {
+function AnimatedText({ text, className, delayBetween = 120, onComplete, startAnimation }) {
   const words = text.split(" ");
   const [visibleCount, setVisibleCount] = useState(0);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
-    if (!startAnimation) return;
+    if (!startAnimation) return; // só inicia quando startAnimation for true
+    setVisibleCount(0);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    if (visibleCount < words.length) {
-      const timeout = setTimeout(() => {
-        setVisibleCount(visibleCount + 1);
-      }, delayBetween);
-      return () => clearTimeout(timeout);
-    } else if (onComplete) {
-      onComplete();
+    function showNextWord(count) {
+      if (count < words.length) {
+        timeoutRef.current = setTimeout(() => {
+          setVisibleCount(count + 1);
+          showNextWord(count + 1);
+        }, delayBetween);
+      } else if (onComplete) {
+        onComplete();
+      }
     }
-  }, [visibleCount, words.length, delayBetween, startAnimation, onComplete]);
+
+    showNextWord(0);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [text, delayBetween, onComplete, words.length, startAnimation]);
 
   return (
     <p className={className} style={{ overflowWrap: "break-word", display: "inline" }}>
@@ -79,7 +89,19 @@ export default function About() {
   const [cardsVisible, setCardsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Scroll infinito alinhado corretamente
+  // === NOVO: estado para About e listener de troca de linguagem ===
+  const [aboutText, setAboutText] = useState(strings.get("aboutContent"));
+  useEffect(() => {
+    const handleLanguageChange = () => setAboutText(strings.get("aboutContent"));
+    window.addEventListener("languageChange", handleLanguageChange);
+    return () => window.removeEventListener("languageChange", handleLanguageChange);
+  }, []);
+
+  // === NOVO: memo do onComplete para não reiniciar animação a cada render ===
+  const handleComplete = useCallback(() => {
+    setCardsVisible(true);
+  }, []);
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -100,7 +122,6 @@ export default function About() {
     return () => cancelAnimationFrame(animationFrameId.current);
   }, [isPaused]);
 
-  // Trigger da animação do texto ao entrar na viewport
   useEffect(() => {
     if (!sectionRef.current) return;
 
@@ -141,7 +162,6 @@ export default function About() {
         id="about"
         className="py-20 px-4 sm:px-6 lg:px-16 bg-[#12131A] text-[#e4ded7] min-h-screen"
       >
-        {/* Cabeçalho */}
         <div className="max-w-5xl mx-auto text-center mb-16">
           <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-white">
             <AnimatedText
@@ -151,15 +171,14 @@ export default function About() {
             />
           </h2>
           <AnimatedText
-            text="I’m David Borges — a versatile software engineer blending creativity and technical precision. From AI-driven solutions to full-stack web apps, I transform ideas into scalable, high-impact products. My journey spans frontend, backend, and IoT innovation, enriched by international collaborations in France, Poland, and Belgium. Passionate about clean code, I design systems that are intuitive, reliable, and future-ready."
+            text={aboutText}  // <-- passa o estado que muda com a linguagem
             className="text-lg text-gray-400 leading-relaxed max-w-3xl mx-auto"
             delayBetween={100}
             startAnimation={startAnimation}
-            onComplete={() => setCardsVisible(true)}
+            onComplete={handleComplete} // <-- função memoizada
           />
         </div>
 
-        {/* Cards */}
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-20">
           {[
             { title: "💻 Full-Stack Development", desc: "React, Node.js, PHP, Flutter, MySQL, MongoDB" },
@@ -171,7 +190,6 @@ export default function About() {
               key={idx}
               className={`${cardsVisible ? "card-animate" : "card-hidden"} bg-[#1b1d27] p-6 rounded-xl shadow-lg hover:scale-105 transition-transform`}
               style={{ animationDelay: cardsVisible ? `${idx * 0.28}s` : "0s" }}
-              {...(cardsVisible ? { "data-blobity": true } : {})}
             >
               <h4 className="text-xl font-semibold text-white mb-3">{card.title}</h4>
               <p className="text-gray-400 text-sm">{card.desc}</p>
@@ -179,7 +197,6 @@ export default function About() {
           ))}
         </div>
 
-        {/* Skills Scroll */}
         <div className="overflow-hidden">
           <div
             ref={containerRef}
@@ -189,7 +206,6 @@ export default function About() {
             {[...skills, ...skills].map((skill, index) => (
               <div
                 key={index}
-                data-blobity
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
                 className="flex flex-col items-center bg-[#1b1d27] p-8 rounded-3xl shadow-lg w-48 flex-shrink-0 transition-transform duration-300 hover:scale-105"

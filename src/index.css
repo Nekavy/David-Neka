@@ -87,6 +87,9 @@ canvas {
 .fade-slide-in {
   animation: fadeSlideIn 0.8s ease-out forwards;
 }
+html, body {
+  overflow-x: hidden;
+}
 
 
 
