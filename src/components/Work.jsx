@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import aiProjects from "../projects/ai.json";
 import webProjects from "../projects/web.json";
 import mobileProjects from "../projects/mobile.json";
@@ -6,6 +6,7 @@ import designProjects from "../projects/design.json";
 import backendProjects from "../projects/backend.json";
 import iotProjects from "../projects/iot.json";
 import { Typewriter } from "react-simple-typewriter";
+import strings from "./strings";
 
 const categories = ["AI", "Web", "Mobile", "Design", "Backend", "IoT"];
 
@@ -20,6 +21,27 @@ const projects = [
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("Web");
+  
+  // Estado para os textos dinâmicos
+  const [portfolioTexts, setPortfolioTexts] = useState({
+    title: strings.get("portfolioTitle"),
+    subtitle: strings.get("portfolioSubtitle"),
+    noProjects: strings.get("noProjectsFound")
+  });
+
+  // Listener para mudanças de linguagem
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setPortfolioTexts({
+        title: strings.get("portfolioTitle"),
+        subtitle: strings.get("portfolioSubtitle"),
+        noProjects: strings.get("noProjectsFound")
+      });
+    };
+    
+    window.addEventListener("languageChange", handleLanguageChange);
+    return () => window.removeEventListener("languageChange", handleLanguageChange);
+  }, []);
 
   const filteredProjects = projects.filter(
     (project) => project.category === selectedCategory
@@ -34,13 +56,13 @@ export default function Portfolio() {
         <h2 className="text-5xl font-extrabold mb-6">
           <Typewriter
             words={[
-              "Project portfolio",
-              "AI explorations",
-              "Web development",
-              "Mobile applications",
-              "Functional design",
-              "Backend experience",
-              "IoT prototyping",
+              strings.get("worktitle"),
+              strings.get("worktitleWEB"),
+              strings.get("worktitleAI"),
+              strings.get("worktitleMobile"),
+              strings.get("worktitleDesign"),
+              strings.get("worktitleBackend"),
+              strings.get("worktitleIoT"),
             ]}
             loop={0}
             cursor
@@ -52,7 +74,7 @@ export default function Portfolio() {
         </h2>
 
         <p className="text-base md:text-lg mb-12 text-gray-400">
-          Explore projects by category.
+          {portfolioTexts.subtitle}
         </p>
 
         {/* Menu categorias */}
@@ -75,7 +97,7 @@ export default function Portfolio() {
         {/* Projetos filtrados */}
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.length === 0 ? (
-            <p className="text-gray-400">No projects found in this category.</p>
+            <p className="text-gray-400">{portfolioTexts.noProjects}</p>
           ) : (
             filteredProjects.map((project, index) => (
               <div
@@ -95,14 +117,9 @@ export default function Portfolio() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      data-blobity
-                      data-blobity-shape="circle"
-                      data-blobity-magnetic="false"
-                      data-blobity-radius="20"
                       className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-black bg-white text-black hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      {/* SVG GitHub */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -118,14 +135,9 @@ export default function Portfolio() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      data-blobity
-                      data-blobity-shape="circle"
-                      data-blobity-magnetic="false"
-                      data-blobity-radius="20"
                       className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-black bg-white text-black hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      {/* SVG Corrente */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -146,7 +158,7 @@ export default function Portfolio() {
 
                 <div className="p-5 text-left">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-sm text-gray-300">{project.description}</p>
+                  <p className="text-sm text-gray-300">{strings.get(project.description)}</p>
                 </div>
               </div>
             ))

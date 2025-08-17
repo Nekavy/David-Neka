@@ -1,14 +1,14 @@
 [
   {
     "title": "Parkking App",
-    "description": "A responsive application for booking parking spaces, built with dart and Flutter. with multiple apis like Google Maps firebase payment api systems and more.",
+    "description": "parkkingApp",
     "image": "/assets/portfolio-thumb.jpg",
     "slug": "personal-portfolio",
     "github": "https://github.com/seuusuario/portfolio"
   },
   {
     "title": "Bird Hunt Game published on Google Play Store",
-    "description": "A game where you avoid projectiles as a bird, ssimplistic game built with C# and Unity. It was available on the Google Play Store but due to inactivity it was shut down. did all the processes to publish a game and processes for ad revenue",
+    "description": "BirdHuntGame",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"

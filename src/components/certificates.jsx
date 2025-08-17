@@ -1,10 +1,30 @@
 import { useEffect, useRef, useState } from "react";
+import strings from "./strings"; // sistema de strings
 
 const categories = ["All", "Certificates", "Awards"];
+
 export default function Certificates() {
   const sectionRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // === NOVO: estado para os textos que mudam com a linguagem ===
+  const [titles, setTitles] = useState({
+    title1: strings.get("certificatetitle1"),
+    title2: strings.get("certificatetitle2"),
+  });
+
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setTitles({
+        title1: strings.get("certificatetitle1"),
+        title2: strings.get("certificatetitle2"),
+      });
+      setHasAnimated(false); // resetar animação ao trocar idioma
+    };
+    window.addEventListener("languageChange", handleLanguageChange);
+    return () => window.removeEventListener("languageChange", handleLanguageChange);
+  }, []);
 
   const items = [
     {
@@ -49,6 +69,7 @@ export default function Certificates() {
       ? items
       : items.filter((item) => item.type === selectedCategory.slice(0, -1));
 
+  // Observador de animação
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -72,15 +93,15 @@ export default function Certificates() {
       className="py-20 px-4 sm:px-6 lg:px-16 bg-[#0E1016] text-[#e4ded7]"
     >
       <div className="flex flex-col items-center justify-center">
-        <h1 className="flex flex-col items-center text-center text-[72px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-extrabold leading-[1em] mb-6">
+        <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-white">
           <span className={`opacity-0 ${hasAnimated ? "fade-up" : ""}`}>
-            CERTIFICATES
+            {titles.title1}
           </span>
+          <p></p>
           <span className={`opacity-0 ${hasAnimated ? "fade-up-delay" : ""}`}>
-            & AWARDS
+            {titles.title2}
           </span>
-        </h1>
-
+        </h2>
         <p className="text-base md:text-lg text-gray-400 mb-12 text-center max-w-3xl">
           A selection of my certificates and awards from different fields.
         </p>
@@ -113,9 +134,7 @@ export default function Certificates() {
                 <span className="text-xs uppercase tracking-wider text-blue-400">
                   {item.type}
                 </span>
-                <h3 className="text-lg font-bold text-white mt-1">
-                  {item.title}
-                </h3>
+                <h3 className="text-lg font-bold text-white mt-1">{item.title}</h3>
                 <p className="text-sm text-gray-400">{item.issuer}</p>
                 <p className="text-xs text-gray-500 mb-2">{item.date}</p>
                 <a

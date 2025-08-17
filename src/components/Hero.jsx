@@ -100,6 +100,8 @@ export default function Hero() {
             <a
               href="https://github.com/davidborges"
               target="_blank"
+              data-blobity-magnetic="false"
+              data-blobity-radius="18"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors"
             >
@@ -108,6 +110,7 @@ export default function Hero() {
             <a
               href="https://linkedin.com/in/seu-linkedin"
               target="_blank"
+              data-blobity-magnetic="false"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors"
             >
@@ -115,6 +118,7 @@ export default function Hero() {
             </a>
             <div className="relative flex items-center">
               <button
+                data-blobity-magnetic="false"
                 onClick={handleCopyEmail}
                 className="hover:text-gray-300 transition-colors"
               >

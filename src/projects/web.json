@@ -1,7 +1,7 @@
 [
   {
     "title": "OportoCenter",
-    "description": "A website for private company that has apartment booking in Porto, Portugal. (now mostly deactivated)",
+    "description": "oportocenter",
     "image": "/assets/oporto.png",
     "slug": "personal-portfolio",
     "github": "",
@@ -9,7 +9,7 @@
   },
   {
     "title": "Wonderer Design Portfolio",
-    "description": "A responsive portfolio built with React and Tailwind CSS.",
+    "description": "wondererDesignWebsite",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page",
@@ -17,7 +17,7 @@
   },
   {
     "title": "David Neka Portfolio",
-    "description": "My personal responsive portfolio built with React and Tailwind CSS.",
+    "description": "davidnekaPortfolio",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"

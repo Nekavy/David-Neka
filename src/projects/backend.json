@@ -1,20 +1,20 @@
 [
   {
     "title": "Oracle Ubuntu Server",
-    "description": "A server setup using Oracle Cloud Infrastructure to host a personal portfolio. and other projects. like apps, databases... It also includes api solutions, pipelines, and more.",
+    "description": "oracleubuntuServer",
     "image": "/assets/portfolio-thumb.jpg",
     "slug": "personal-portfolio"
   },
   {
     "title": "Fish Pond monitoring infrastructure",
-    "description": "High-converting landing page using HTML/CSS/JS.",
+    "description": "fishpondmonitoringSystem",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"
   },
   {
     "title": "Database Management of oportocenter",
-    "description": "real database management of a private company that has apartment booking in Porto, Portugal. with management of apartments, clients, days booked and transactions.",
+    "description": "DatabseOportocenter",
     "image": "/assets/landing-thumb.jpg",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"
