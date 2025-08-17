@@ -8,6 +8,7 @@ export default function Certificates() {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [modalItem, setModalItem] = useState(null);
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   const [titles, setTitles] = useState({
     title1: strings.get("certificatetitle1"),
@@ -28,40 +29,82 @@ export default function Certificates() {
 
   const items = [
     {
-      title: "Menção Honrosa Gondomar",
-      issuer: "Gondomar Event",
       type: "Award",
-      image: "/assets/certificates/MençãoHonrosaGondomar.png",
+      title: strings.get("item1_title"),
+      issuer: strings.get("item1_issuer"),
+      typeText: strings.get("item1_typeText"),
+      images: ["/assets/certificates/MençãoHonrosaGondomar.png"],
     },
     {
-      title: "Frontend Developer Certification",
-      issuer: "freeCodeCamp",
-      type: "Certificate",
-      image: "/assets/certificates/frontend.png",
-    },
-    {
-      title: "Responsive Web Design",
-      issuer: "Coursera",
-      type: "Certificate",
-      image: "/assets/certificates/responsive.png",
-    },
-    {
-      title: "JavaScript Algorithms and Data Structures",
-      issuer: "freeCodeCamp",
-      type: "Certificate",
-      image: "/assets/certificates/javascript.png",
-    },
-    {
-      title: "Best Innovation Award",
-      issuer: "Tech Expo 2024",
       type: "Award",
-      image: "/assets/certificates/innovation.png",
+      title: strings.get("item2_title"),
+      issuer: strings.get("item2_issuer"),
+      typeText: strings.get("item2_typeText"),
+      images: [
+        "/assets/certificates/costaincode.png",
+        "/assets/certificates/incode2030.png",
+      ],
     },
     {
-      title: "Community Recognition",
-      issuer: "Open Source Contributors",
+      type: "Certificate",
+      title: strings.get("item3_title"),
+      issuer: strings.get("item3_issuer"),
+      typeText: strings.get("item3_typeText"),
+            images: [
+        "/assets/certificates/Certificadosescolahonra.png",
+        "/assets/certificates/Certificadosescolahonra2.png",
+      ],
+    },
+    {
       type: "Award",
-      image: "/assets/certificates/community.png",
+      title: strings.get("item4_title"),
+      issuer: strings.get("item4_issuer"),
+      typeText: strings.get("item4_typeText"),
+      images: ["/assets/certificates/papticepremio.png",
+        "/assets/certificates/papticephoto.png",
+      ],
+    },
+    {
+      type: "Certificate",
+      title: strings.get("item5_title"),
+      issuer: strings.get("item5_issuer"),
+      typeText: strings.get("item5_typeText"),
+      images: ["/assets/certificates/Certificadonivel4.png"],
+    },
+    {
+      type: "Award",
+      title: strings.get("item6_title"),
+      issuer: strings.get("item6_issuer"),
+      typeText: strings.get("item6_typeText"),
+      images: ["/assets/certificates/cinelnivel5.png"],
+    },
+    {
+      type: "Certificate",
+      title: strings.get("item7_title"),
+      issuer: strings.get("item7_issuer"),
+      typeText: strings.get("item7_typeText"),
+      images: ["/assets/certificates/ispgayalincenciatura.png"],
+    },
+    {
+      type: "Certificate",
+      title: strings.get("item8_title"),
+      issuer: strings.get("item8_issuer"),
+      typeText: strings.get("item8_typeText"),
+      images: ["/assets/certificates/lodz.png"],
+    },
+    {
+      type: "Certificate",
+      title: strings.get("item9_title"),
+      issuer: strings.get("item9_issuer"),
+      typeText: strings.get("item9_typeText"),
+      images: ["/assets/certificates/antwer.png"],
+    },
+    {
+      type: "Certificate",
+      title: strings.get("item10_title"),
+      issuer: strings.get("item10_issuer"),
+      typeText: strings.get("item10_typeText"),
+      images: [""],
     },
   ];
 
@@ -86,25 +129,37 @@ export default function Certificates() {
     };
   }, [hasAnimated]);
 
-  // Bloqueia scroll quando modal aberto e mantém posição
   useEffect(() => {
     if (modalItem) {
       const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
+      document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
     } else {
       const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
       if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
       }
+      setModalImageIndex(0);
     }
   }, [modalItem]);
+
+  const handlePrevImage = () => {
+    setModalImageIndex((prev) =>
+      prev === 0 ? modalItem.images.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setModalImageIndex((prev) =>
+      prev === modalItem.images.length - 1 ? 0 : prev + 1
+    );
+  };
 
   return (
     <section
@@ -114,12 +169,16 @@ export default function Certificates() {
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-white">
-          <span className={`opacity-0 ${hasAnimated ? "fade-up" : ""}`}>{titles.title1}</span>
+          <span className={`opacity-0 ${hasAnimated ? "fade-up" : ""}`}>
+            {titles.title1}
+          </span>
           <p></p>
-          <span className={`opacity-0 ${hasAnimated ? "fade-up-delay" : ""}`}>{titles.title2}</span>
+          <span className={`opacity-0 ${hasAnimated ? "fade-up-delay" : ""}`}>
+            {titles.title2}
+          </span>
         </h2>
         <p className="text-base md:text-lg text-gray-400 mb-12 text-center max-w-3xl">
-          A selection of my certificates and awards from different fields.
+          {strings.get("certificatedescript")}
         </p>
 
         <nav className="mb-12 flex justify-center gap-6 flex-wrap">
@@ -128,7 +187,9 @@ export default function Certificates() {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-6 py-2 rounded-lg font-semibold transition duration-300 ${
-                selectedCategory === cat ? "bg-white/80 text-gray-900" : "bg-white/10 text-white"
+                selectedCategory === cat
+                  ? "bg-white/80 text-gray-900"
+                  : "bg-white/10 text-white"
               }`}
             >
               {cat}
@@ -147,12 +208,14 @@ export default function Certificates() {
                 onClick={() => setModalItem(item)}
               >
                 <img
-                  src={item.image}
+                  src={item.images[0]}
                   alt={item.title}
                   className="w-full h-40 object-cover transition group-hover:opacity-90"
                 />
                 <div className="p-6">
-                  <span className="text-xs uppercase tracking-wider text-white/70">{item.type}</span>
+                  <span className="text-xs uppercase tracking-wider text-white/70">
+                    {item.typeText}
+                  </span>
                   <h3 className="text-lg font-bold text-white mt-1">{item.title}</h3>
                   <p className="text-sm text-gray-400">{item.issuer}</p>
                 </div>
@@ -169,13 +232,33 @@ export default function Certificates() {
             >
               &times;
             </button>
+
+            {modalItem.images.length > 1 && (
+              <>
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl font-bold hover:text-gray-300"
+                >
+                  &#10094;
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl font-bold hover:text-gray-300"
+                >
+                  &#10095;
+                </button>
+              </>
+            )}
+
             <img
-              src={modalItem.image}
+              src={modalItem.images[modalImageIndex]}
               alt="certificate"
               className="max-h-[70%] max-w-[90%] rounded-lg shadow-lg mb-6"
             />
             <div className="text-center text-white">
-              <span className="text-sm uppercase tracking-wider text-white/70">{modalItem.type}</span>
+              <span className="text-sm uppercase tracking-wider text-white/70">
+                {modalItem.typeText}
+              </span>
               <h3 className="text-xl font-bold mt-2">{modalItem.title}</h3>
               <p className="text-base text-gray-300">{modalItem.issuer}</p>
             </div>

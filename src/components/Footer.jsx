@@ -13,7 +13,7 @@ export default function Footer() {
         <p className="text-sm text-gray-400 flex items-center gap-1">
           Developed and designed by 
           <a
-            href="https://github.com/davidborges"
+            href="https://www.linkedin.com/in/davidneka/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#e4ded7] hover:text-white transition-colors font-medium"

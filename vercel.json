@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {},
+    "npmRunBuild": "react-scripts build",
+    "installCommand": "npm install --legacy-peer-deps"
+  }
+}

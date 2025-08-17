@@ -66,7 +66,7 @@ export default function Contact() {
   }, []);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("teuemail@email.com");
+    navigator.clipboard.writeText("david.heber.borges@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -119,14 +119,14 @@ export default function Contact() {
         {textFinished && (
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-6 mt-4">
-              <a href="https://github.com/davidborges" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+              <a href="https://github.com/Nekavy" target="_blank" rel="noopener noreferrer" data-blobity-radius="18" data-blobity-magnetic="false" className="hover:text-gray-300 transition-colors">
                 <FaGithub className="w-10 h-10" />
               </a>
-              <a href="https://linkedin.com/in/seu-linkedin" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+              <a href="https://www.linkedin.com/in/davidneka/" target="_blank" rel="noopener noreferrer"  data-blobity-magnetic="false" className="hover:text-gray-300 transition-colors">
                 <FaLinkedin className="w-10 h-10" />
               </a>
               <div className="relative flex items-center">
-                <button onClick={handleCopyEmail} className="hover:text-gray-300 transition-colors">
+                <button onClick={handleCopyEmail}  data-blobity-magnetic="false" className="hover:text-gray-300 transition-colors">
                   <FaEnvelope className="w-10 h-10" />
                 </button>
                 {copied && (

@@ -14,7 +14,7 @@ export default function Hero() {
   }, []);
 
   const handleCopyEmail = () => {
-    const email = "teuemail@example.com"; // substitui pelo teu email real
+    const email = "david.heber.borges@gmail.com";
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -98,7 +98,7 @@ export default function Hero() {
 
           <div className="hidden lg:flex items-center gap-4 text-[#e4ded7]">
             <a
-              href="https://github.com/davidborges"
+              href="https://github.com/Nekavy"
               target="_blank"
               data-blobity-magnetic="false"
               data-blobity-radius="18"
@@ -108,7 +108,7 @@ export default function Hero() {
               <FaGithub className="w-10 h-10" />
             </a>
             <a
-              href="https://linkedin.com/in/seu-linkedin"
+              href="https://www.linkedin.com/in/davidneka/"
               target="_blank"
               data-blobity-magnetic="false"
               rel="noopener noreferrer"

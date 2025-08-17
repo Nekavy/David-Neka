@@ -8,8 +8,10 @@ const strings = {
       copied: "Copiado!",
       navHome: "Início",
       navAbout: "Sobre",
+      navCertificates: "Certificados",
       navContact: "Contacto",
       aboutTitle: "Sobre Mim",
+      certificatedescript:"Uma seleção dos meus certificados e prémios de diferentes áreas.",
       aboutContent: "Sou David Borges, um programador full-stack com 2 anos de experiência profissional no desenvolvimento de aplicações web e gestão de bases de dados, incluindo sistemas que processavam dados de clientes. Para além do trabalho profissional, realizei estágios e projetos para empresas, bem como trabalhos pessoais e académicos. Estou a concluir a minha licenciatura em Engenharia Informática / Software Development, faltando apenas a disciplina de Matemática, e possuo certificações de Nível 4 e Nível 5 em Tecnologias de Programação, Sistemas de Informação, Eletrónica e Computadores. Tenho também conhecimentos em inteligência artificial e desenvolvimento mobile. Estas qualificações deram origem a uma ampla gama de projetos, desde protótipos de IoT e experiências com IA até aplicações móveis multiplataforma. A minha experiência abrange frontend, backend e gestão de dados, enriquecida por colaborações internacionais em contexto académico com instituições em França, Polónia e Bélgica. Sou apaixonado por escrever código limpo e desenvolver sistemas intuitivos, fiáveis e preparados para o futuro.",
       contactText: "Interessado em trabalhar junto? Entra em contacto!",
       certificatetitle1: "Certificados",
@@ -48,14 +50,59 @@ const strings = {
       mqttZsuporteofficecompany: "Sistema de monitoramento de escritório inteligente usando MQTT e Node-red para controlar luzes, temperatura e segurança geral dos escritorios da empresa Zsuporte, com integração de sensores IoT.",
       MultipleIOTDevices: "Varios Projetos e prototipos ao longo de varios anos, com foco em automação residencial e controle de dispositivos IoT, utilizando ESP32, Raspberry Pi, Arduino e outros microcontroladores.",
       HinaProject: "Projeto de automação residencial com Hina, um projeto que usa uma simulação 3D no mundo real, de uma assistente virtual 3D, utilizando Arduino e sensores para controle de iluminação, temperatura e segurança, com foco em eficiência energética e conforto (Smart Housing).",
+    
+      // Certificados
+      certificatetitle1: "Certificados &",
+      certificatetitle2: "Prémios",
+      item1_title: "Menção Honrosa Gondomar",
+      item1_issuer: "Representação da câmara Municipal de Gondomar",
+      item1_typeText: "Prémio",
+
+      item2_title: "InCode 2030",
+      item2_issuer: "Fotografia com Antonio Costa",
+      item2_typeText: "Convite de participação incode 2030",
+
+      item3_title: "Certificados de representação escolar nacionalmente",
+      item3_issuer: "AERT3",
+      item3_typeText: "Prémio",
+
+      item4_title: "Lisboa paptice competition internacional",
+      item4_issuer: "Projeto Hina (Smart Housing com assistente virtual, IOT e soluções de IA) com CEO da empresa .PT (PORTUGAL TELECOM)",
+      item4_typeText: "Prémio",
+
+      item5_title: "Curso de eletricidade eletronica e automação nivel 4",
+      item5_issuer: "AERT3",
+      item5_typeText: "Diploma",
+
+      item6_title: "nivel 5 tecnologias de programação e sistemas de informação",
+      item6_issuer: "Cinel",
+      item6_typeText: "Certificado",
+
+      item7_title: "Ispgaya Licenciatura Engenharia Informática",
+      item7_issuer: "De momento a acabar licenciatura faltando apenas matematica, em Engenharia informática",
+      item7_typeText: "Certificado",
+
+      item8_title: "Projeto na universidade de Lodz Polónia",
+      item8_issuer: "Selecionado através de um processo seletivo para representar a minha universidade num projeto internacional na Polónia, com IA e IOT",
+      item8_typeText: "Certificado",
+
+      item9_title: "Projeto na universidade de Antuerpia Bélgica",
+      item9_issuer: "Selecionado através de um processo seletivo para representar a minha universidade num projeto internacional na Bélgica, com infraestrutura de IOT e analise de dados, para comunidades pobres na Uganda Africa",
+      item9_typeText: "Certificado",
+
+      item10_title: "Projeto na universidade de Lens, França",
+      item10_issuer: " Selecionado através de um processo seletivo para representar a minha universidade num projeto internacional na Lens, França, para uma aplicative web / mobile",
+      item10_typeText: "Certificado",
     },
     en: {
       heroDescription: "Full-Stack Developer | Electronics & AI Development",
       copied: "Copied!",
       navHome: "Home",
       navAbout: "About",
+      navCertificates: "Certificates",
       navContact: "Contact",
       aboutTitle: "About Me",
+      certificatedescript:"A selection of my certificates and awards from different fields.",
       aboutContent: "I’m David Borges, a full-stack developer with 2 years of professional experience in web application development and database management, including systems that processed client data. In addition to professional work, I have completed internships and projects for companies, as well as personal and academic work. I am currently finishing my Bachelor’s degree in Computer Engineering / Software Development, with only Mathematics pending, and hold Level 4 and Level 5 certifications in Programming Technologies, Information Systems, Electronics, and Computers. I also have knowledge in artificial intelligence and mobile development. These qualifications have led to a wide range of projects, from IoT prototypes and AI experiments to cross-platform mobile applications. My experience spans frontend, backend, and data management, enriched by academic collaborations with institutions in France, Poland, and Belgium. I am passionate about writing clean code and building systems that are intuitive, reliable, and future-ready.",
       certificatetitle1: "Certificates ",
       certificatetitle2: "& Recognition",
@@ -94,6 +141,49 @@ const strings = {
       mqttZsuporteofficecompany: "Smart office monitoring system using MQTT and Node-red to control lights, temperature, and overall security of Zsuporte company offices, with IoT sensor integration.",
       MultipleIOTDevices: "Various projects and prototypes over the years, focusing on home automation and IoT device control, using ESP32, Raspberry Pi, Arduino, and other microcontrollers.",
       HinaProject: "Home automation project with Hina, a project that uses a 3D simulation in the real world, of a 3D virtual assistant, using Arduino and sensors to control lighting, temperature, and security, focusing on energy efficiency and comfort (Smart Housing).", 
+
+      //Certificates
+      certificatetitle1: "Certificates &",
+      certificatetitle2: "Awards",
+      item1_title: "Honorable Mention Gondomar",
+      item1_issuer: "Representation of municipality of Gondomar",
+      item1_typeText: "Award",
+
+      item2_title: "InCode 2030",
+      item2_issuer: "Photo with Antonio Costa",
+      item2_typeText: "InCode 2030 Participation Invitation",
+
+      item3_title: "National School Representation Certificates",
+      item3_issuer: "AERT3",
+      item3_typeText: "Certificate",
+
+      item4_title: "Lisbon international paptice competition",
+      item4_issuer: "Hina Project (Smart Housing with virtual assistant, IOT and AI solutions) with CEO of .PT (PORTUGAL TELECOM)",
+      item4_typeText: "Award",
+
+      item5_title: "Level 4 Electronics, Automation and Electricity Course",
+      item5_issuer: "AERT3",
+      item5_typeText: "Diploma",
+
+      item6_title: "level 5 tecnologies of programming and sistems of information",
+      item6_issuer: "Cinel",
+      item6_typeText: "Certificate",
+
+      item7_title: "Ispgaya Bachelor's Degree in Software Engineering",
+      item7_issuer: "Currently finishing my Bachelor's degree with only Mathematics pending, in Software Engineering",
+      item7_typeText: "Certificate",
+
+      item8_title: "Project in university of Lodz Poland",
+      item8_issuer: "Selected trough a selective process to represent my university in an international project in Poland, with AI and IoT",
+      item8_typeText: "Certificate",
+
+      item9_title: "Project in university of Antwerp Belgium",
+      item9_issuer: "Selected trough a selective process to represent my university in an international project in Belgium, with IoT infrastructure and data analysis, for poor communities in Uganda Africa",
+      item9_typeText: "Certificate",
+
+      item10_title: "Project in university of Lens France",
+      item10_issuer: "Selected trough a selective process to represent my university in an international project in Lens, France, for a web/mobile application",
+      item10_typeText: "Certificate",
     },
   },
   setLang(newLang) {

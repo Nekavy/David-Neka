@@ -116,6 +116,8 @@ export default function Portfolio() {
                     <a
                       href={project.github}
                       target="_blank"
+                      data-blobity-radius="18"
+                      //data-blobity-magnetic="false"
                       rel="noopener noreferrer"
                       className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-black bg-white text-black hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()}
@@ -135,6 +137,7 @@ export default function Portfolio() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-blobity-radius="18"
                       className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-black bg-white text-black hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()}
                     >
