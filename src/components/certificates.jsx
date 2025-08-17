@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import strings from "./strings"; // sistema de strings
+import strings from "./strings";
 
 const categories = ["All", "Certificates", "Awards"];
 
@@ -7,8 +7,8 @@ export default function Certificates() {
   const sectionRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [modalItem, setModalItem] = useState(null);
 
-  // === NOVO: estado para os textos que mudam com a linguagem ===
   const [titles, setTitles] = useState({
     title1: strings.get("certificatetitle1"),
     title2: strings.get("certificatetitle2"),
@@ -20,7 +20,7 @@ export default function Certificates() {
         title1: strings.get("certificatetitle1"),
         title2: strings.get("certificatetitle2"),
       });
-      setHasAnimated(false); // resetar animação ao trocar idioma
+      setHasAnimated(false);
     };
     window.addEventListener("languageChange", handleLanguageChange);
     return () => window.removeEventListener("languageChange", handleLanguageChange);
@@ -28,39 +28,40 @@ export default function Certificates() {
 
   const items = [
     {
+      title: "Menção Honrosa Gondomar",
+      issuer: "Gondomar Event",
+      type: "Award",
+      image: "/assets/certificates/MençãoHonrosaGondomar.png",
+    },
+    {
       title: "Frontend Developer Certification",
       issuer: "freeCodeCamp",
-      date: "June 2024",
       type: "Certificate",
-      url: "#",
+      image: "/assets/certificates/frontend.png",
     },
     {
       title: "Responsive Web Design",
       issuer: "Coursera",
-      date: "April 2024",
       type: "Certificate",
-      url: "#",
+      image: "/assets/certificates/responsive.png",
     },
     {
       title: "JavaScript Algorithms and Data Structures",
       issuer: "freeCodeCamp",
-      date: "March 2024",
       type: "Certificate",
-      url: "#",
+      image: "/assets/certificates/javascript.png",
     },
     {
       title: "Best Innovation Award",
       issuer: "Tech Expo 2024",
-      date: "February 2024",
       type: "Award",
-      url: "#",
+      image: "/assets/certificates/innovation.png",
     },
     {
       title: "Community Recognition",
       issuer: "Open Source Contributors",
-      date: "January 2024",
       type: "Award",
-      url: "#",
+      image: "/assets/certificates/community.png",
     },
   ];
 
@@ -69,7 +70,6 @@ export default function Certificates() {
       ? items
       : items.filter((item) => item.type === selectedCategory.slice(0, -1));
 
-  // Observador de animação
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -86,6 +86,26 @@ export default function Certificates() {
     };
   }, [hasAnimated]);
 
+  // Bloqueia scroll quando modal aberto e mantém posição
+  useEffect(() => {
+    if (modalItem) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+  }, [modalItem]);
+
   return (
     <section
       ref={sectionRef}
@@ -94,13 +114,9 @@ export default function Certificates() {
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-white">
-          <span className={`opacity-0 ${hasAnimated ? "fade-up" : ""}`}>
-            {titles.title1}
-          </span>
+          <span className={`opacity-0 ${hasAnimated ? "fade-up" : ""}`}>{titles.title1}</span>
           <p></p>
-          <span className={`opacity-0 ${hasAnimated ? "fade-up-delay" : ""}`}>
-            {titles.title2}
-          </span>
+          <span className={`opacity-0 ${hasAnimated ? "fade-up-delay" : ""}`}>{titles.title2}</span>
         </h2>
         <p className="text-base md:text-lg text-gray-400 mb-12 text-center max-w-3xl">
           A selection of my certificates and awards from different fields.
@@ -112,9 +128,7 @@ export default function Certificates() {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-6 py-2 rounded-lg font-semibold transition duration-300 ${
-                selectedCategory === cat
-                  ? "bg-white/80 text-gray-900"
-                  : "bg-white/10 text-white hover:bg-white/20"
+                selectedCategory === cat ? "bg-white/80 text-gray-900" : "bg-white/10 text-white"
               }`}
             >
               {cat}
@@ -129,26 +143,44 @@ export default function Certificates() {
             filteredItems.map((item, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-[#1f1f23] bg-[#1a1b22] p-6 shadow hover:shadow-lg transition"
+                className="group rounded-xl border border-[#1f1f23] bg-[#1a1b22] shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                onClick={() => setModalItem(item)}
               >
-                <span className="text-xs uppercase tracking-wider text-blue-400">
-                  {item.type}
-                </span>
-                <h3 className="text-lg font-bold text-white mt-1">{item.title}</h3>
-                <p className="text-sm text-gray-400">{item.issuer}</p>
-                <p className="text-xs text-gray-500 mb-2">{item.date}</p>
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-blue-400 hover:underline"
-                >
-                  View Details
-                </a>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-40 object-cover transition group-hover:opacity-90"
+                />
+                <div className="p-6">
+                  <span className="text-xs uppercase tracking-wider text-white/70">{item.type}</span>
+                  <h3 className="text-lg font-bold text-white mt-1">{item.title}</h3>
+                  <p className="text-sm text-gray-400">{item.issuer}</p>
+                </div>
               </div>
             ))
           )}
         </div>
+
+        {modalItem && (
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center z-5 p-4">
+            <button
+              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300"
+              onClick={() => setModalItem(null)}
+            >
+              &times;
+            </button>
+            <img
+              src={modalItem.image}
+              alt="certificate"
+              className="max-h-[70%] max-w-[90%] rounded-lg shadow-lg mb-6"
+            />
+            <div className="text-center text-white">
+              <span className="text-sm uppercase tracking-wider text-white/70">{modalItem.type}</span>
+              <h3 className="text-xl font-bold mt-2">{modalItem.title}</h3>
+              <p className="text-base text-gray-300">{modalItem.issuer}</p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
