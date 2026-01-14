@@ -41,7 +41,7 @@ export default function Certificates() {
       issuer: strings.get("item2_issuer"),
       typeText: strings.get("item2_typeText"),
       images: [
-        "/assets/certificates/costaincode.png",
+        "/assets/certificates/costaincode_censurado.png",
         "/assets/certificates/incode2030.png",
       ],
     },

@@ -59,7 +59,7 @@ const strings = {
       item1_typeText: "Prémio",
 
       item2_title: "InCode 2030",
-      item2_issuer: "Fotografia com Antonio Costa",
+      item2_issuer: "Evento Incode 2030 de exposições",
       item2_typeText: "Convite de participação incode 2030",
 
       item3_title: "Certificados de representação escolar nacionalmente",
@@ -150,7 +150,7 @@ const strings = {
       item1_typeText: "Award",
 
       item2_title: "InCode 2030",
-      item2_issuer: "Photo with Antonio Costa",
+      item2_issuer: "Event Incode 2030 with expositions",
       item2_typeText: "InCode 2030 Participation Invitation",
 
       item3_title: "National School Representation Certificates",

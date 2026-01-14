@@ -2,7 +2,7 @@
   {
     "title": "OportoCenter",
     "description": "oportocenter",
-    "image": "/assets/oporto.png",
+    "image": "assets/projects/web/oporto.png",
     "slug": "personal-portfolio",
     "github": "",
     "url": "https://oportocenter.pt/"
@@ -10,15 +10,15 @@
   {
     "title": "Wonderer Design Portfolio",
     "description": "wondererDesignWebsite",
-    "image": "/assets/landing-thumb.jpg",
+    "image": "/assets/projects/web/wonderer.png",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page",
     "url": "https://wonderer.pt/"
   },
   {
-    "title": "David Neka Portfolio",
+    "title": "David Portfolio",
     "description": "davidnekaPortfolio",
-    "image": "/assets/landing-thumb.jpg",
+    "image": "/assets/projects/web/davidneka.png",
     "slug": "landing-page",
     "github": "https://github.com/seuusuario/landing-page"
   }
